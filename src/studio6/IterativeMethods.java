@@ -13,11 +13,14 @@ public class IterativeMethods {
 	 *         ...)
 	 */
 	public static double geometricSum(int n) {
-		double sum = 0.0;
-		for (int power = 1; power <= n; ++power) {
-			sum = sum + Math.pow(0.5, power);
+		if (n == 0) {
+			return 0;
 		}
-		return sum;
+		
+		else {
+			return Math.pow(0.5,  n) + geometricSum(n-1);
+		}
+		
 	}
 
 	/**
@@ -26,12 +29,12 @@ public class IterativeMethods {
 	 * @return greatest common divisor of p and q
 	 */
 	public static int gcd(int p, int q) {
-		while (q != 0) {
-			int temp = q;
-			q = p % q;
-			p = temp;
-		}
-		return p;
+			if (p % q == 0) {
+				return q;
+			}
+			else {
+				return gcd(q, p % q);
+			}
 	}
 
 	/**
